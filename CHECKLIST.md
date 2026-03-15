@@ -1,28 +1,21 @@
-# young-frida – 2-Day Checklist
+# young-frida – Checklist
 
-Small tasks to complete over 2 days. Check off each when done.
-
----
-
-## Day 1 – Understand and customize
-
-- [ ] Clone repo and open in editor.
-- [ ] Run the app locally: `cd server && npm install && node server.js`, open http://localhost:3000
-- [ ] Open `server/data/transactions.js` and add or edit one transaction; refresh the page and see it in the table.
-- [ ] Open `server/server.js` and find the `/api/transactions` route; read how the mock data is returned.
-- [ ] Open `public/app.js` and see how `fetch` and the table are built; change one label or table header.
-- [ ] Edit `public/styles.css`: change table border color or row spacing; save and refresh.
-- [ ] (Optional) Add a new item to one order’s `items` array and show it in the table.
+Tasks to complete. Check off each when done. Order is frontend first, then backend and full-stack.
 
 ---
 
-## Day 2 – Refresh button, Docker, deploy
-
-- [ ] Add a Refresh button in `index.html`; in `app.js`, on click, call `fetch('/api/transactions')` again and re-render the table.
-- [ ] (Optional) Show "Loading..." while fetch runs; hide it when data arrives.
-- [ ] (Optional) If `fetch` fails, show a short error message on the page.
-- [ ] Add `server/Dockerfile`: Node image, copy app, `npm install`, expose 3000, `CMD ["node", "server.js"]`.
-- [ ] Add `docker-compose.yml` at repo root: one service that builds from `./server` and maps port 3000:3000.
-- [ ] Run locally with Docker: `docker-compose up --build`, open http://localhost:3000, confirm table loads.
-- [ ] Deploy: copy repo to your server, run `docker-compose up -d`, ensure port 3000 is open (or behind nginx).
-- [ ] Open the server URL in a browser and confirm the transactions table loads.
+- [ ] Clone repo, run the app locally, and open it in the browser.
+- [ ] Trace how the API serves data and how the frontend fetches and renders the table. Change one label or header.
+- [ ] Make the UI look good in `styles.css`:
+  - [ ] Improve typography (font family, sizes, hierarchy).
+  - [ ] Set a clear color palette (background, text, accents) and use it consistently.
+  - [ ] Improve table styling (borders, spacing, header distinction, row hover).
+  - [ ] Add spacing and layout so the page doesn’t feel cramped.
+  - [ ] Anything you would like to improve :)
+- [ ] Add a Refresh button that fetches transactions again and re-renders the table.
+- [ ] (Optional) Show "Loading..." while fetching; show a short error message if fetch fails.
+- [ ] Add one new transaction to the data; confirm it appears in the table.
+- [ ] Add an API that returns the maximum transaction amount. Show that value separately on the page (not in the table).
+- [ ] (Optional) Add a new item to one order’s `items` array and confirm it shows in the table.
+- [ ] Add a Dockerfile for the server and a `docker-compose.yml` at repo root. Run with Docker and confirm the table loads.
+- [ ] Deploy to a server. Confirm the live URL shows the transactions table.
