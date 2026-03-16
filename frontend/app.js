@@ -1,26 +1,43 @@
-const tbody = document.getElementById('table-body');
+async function fetchTransactions() {
+  const tableBody = document.querySelector('#transactionTable tbody');
 
-fetch('/api/transactions')
-  .then(res => res.json())
-  .then(data => {
-    tbody.innerHTML = data
-      .map(t => {
-        const customer = `${t.customer.firstName} ${t.customer.lastName}`;
-        const items = t.order.items.join(', ');
-        return `
-          <tr>
-            <td>${t.id}</td>
-            <td>${t.date}</td>
-            <td>${t.order.priceInEuro}</td>
-            <td>${items}</td>
-            <td>${customer}</td>
-            <td>${t.address.city}</td>
-            <td>${t.address.country}</td>
-          </tr>
-        `;
-      })
-      .join('');
-  })
-  .catch(() => {
-    tbody.innerHTML = '<tr><td colspan="7">Failed to load transactions.</td></tr>';
-  });
+  try {
+    const response = await fetch('/api/transactions');
+    const data = await response.json();
+
+    tableBody.innerHTML = '';
+
+    if (data.length === 0) {
+      tableBody.innerHTML = '<tr><td colspan="5">No transactions found.</td></tr>';
+      return;
+    }
+
+    data.forEach(tx => {
+      const row = document.createElement('tr');
+
+      const statusText = tx.fraud_status == 1 ? ' Fraud' : ' Safe';
+      const statusClass = tx.fraud_status == 1 ? 'status-fraud' : 'status-safe';
+
+      row.innerHTML = `
+    <td>${tx.transaction_id}</td>
+    <td>${tx.customerId}</td> 
+    <td>${tx.country}</td> 
+    <td>${tx.street} ${tx.houseNumber}, ${tx.city}</td>
+    <td>${tx.price.toFixed(2)} ${tx.currency}</td>
+    <td>${tx.fraud_score}</td>
+    <td class="${statusClass}">${statusText}</td>
+`;
+      tableBody.appendChild(row);
+    });
+
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    tableBody.innerHTML = '<tr><td colspan="5" style="color:red">Failed to load data. Check console.</td></tr>';
+  }
+}
+
+// Event listener for the refresh button
+document.getElementById('refreshBtn').addEventListener('click', fetchTransactions);
+
+// Initial load
+fetchTransactions();
