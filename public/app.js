@@ -11,7 +11,7 @@ fetch('/api/transactions')
           <tr>
             <td>${t.id}</td>
             <td>${t.date}</td>
-            <td>${t.order.amount}</td>
+            <td>${t.order.priceInEuro}</td>
             <td>${items}</td>
             <td>${customer}</td>
             <td>${t.address.city}</td>

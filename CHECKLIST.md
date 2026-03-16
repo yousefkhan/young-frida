@@ -14,6 +14,7 @@ Tasks to complete. Check off each when done. Order is frontend first, then backe
   - [ ] Anything you would like to improve :)
 - [ ] Add a Refresh button that fetches transactions again and re-renders the table.
 - [ ] (Optional) Show "Loading..." while fetching; show a short error message if fetch fails.
+- [ ] add these fields { street: String, houseNumber: String, postCode: String } to the address model.
 - [ ] Add one new transaction to the data; confirm it appears in the table.
 - [ ] Add an API that returns the maximum transaction amount. Show that value separately on the page (not in the table).
 - [ ] (Optional) Add a new item to one order’s `items` array and confirm it shows in the table.
