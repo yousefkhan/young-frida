@@ -5,7 +5,7 @@ Simple app: Express API serves mock transactions, and a single page shows them i
 ## Run locally
 
 ```bash
-cd server
+cd backend/transaction-api-server
 npm install
 node server.js
 ```
@@ -14,6 +14,6 @@ Open http://localhost:3000 in your browser.
 
 ## Project layout
 
-- `server/` – Express app and mock data
-- `public/` – HTML, CSS, JS for the table
+- `backend/transaction-api-server` – Express app and mock data
+- `frontend/` – HTML, CSS, JS for the table
 - `CHECKLIST.md` – Tasks (2 days)
