@@ -48,6 +48,44 @@
       color: red;
       font-weight: bold;
     }
+
+    .clickable-row {
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .status-safe {
+      color: #28a745;
+      font-weight: bold;
+    }
+
+    .status-fraud {
+      color: #dc3545;
+      font-weight: bold;
+    }
+
+    .status-pending {
+      color: #ffc107;
+      font-weight: bold;
+    }
+
+    /* Yellow for Pending */
+
+    .details-row {
+      background-color: #f9f9f9;
+    }
+
+    .details-content {
+      padding: 15px;
+      border-left: 4px solid #007bff;
+      font-size: 0.9em;
+      line-height: 1.6;
+    }
+
+    .details-content ul {
+      margin: 5px 0 0 0;
+      padding-left: 20px;
+    }
   </style>
 </head>
 
@@ -68,7 +106,7 @@
       </tr>
     </thead>
     <tbody>
-      </tbody>
+    </tbody>
   </table>
 
   <script src="app.js"></script>
